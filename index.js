@@ -27,6 +27,13 @@ app.post('/:param1', (req, res) => {
   })
 })
 
+// Pega todas as rotas que não foram mapeadas
+app.all('/*', (req, res) => {
+  res.status(404).send({
+    data: 'Oppps, deu ruim aqui!'
+  })
+});
+
 // Inicia o servidor na porta 3000
 app.listen(3000);
 console.log('Magic happens on 3000');
