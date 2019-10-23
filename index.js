@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
 
+const router = express.Router();
+
 // Habilita a captura do body
 app.use(express.json({ strict: false, limit: '50mb' }));
+
+app.use('/novo', require('./novo'))
 
 // Define uma rota com verbo GET
 // Pega 3 parametros na rota
@@ -18,12 +22,23 @@ app.get('/:param1/:param2/:param3', (req, res) => {
 // Define uma rota com o verbo POST
 // Pega 1 parametro na rota
 // Pega o body em JSON
-app.post('/:param1', (req, res) => {
+app.post('/:param1', (req, res, next) => {
   const { param1 } = req.params;
-  console.log(req.body)
+  if (param1 == 1) next();
   res.status(200).send({
     param1,
     body: req.body,
+  })
+})
+
+app.post('/:param1', (req, res, next) => {
+  const { param1 } = req.params;
+
+  res.status(202).send({
+    param1,
+    body: {
+      data: 'Nova rota middleware app'
+    },
   })
 })
 
