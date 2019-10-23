@@ -1,4 +1,11 @@
-## Instruções
+## Mini Curso NodeJs + Express SEMEX 
 
-Executar o comando:
-`npm install`
+### Sequencia do curso (branchs): ###
+
+1- inicio
+
+2- rotas
+
+3- middlewares
+
+4- complete
